@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CFI Lesson Plan: Oxygen Systems & 14 CFR § 91.211</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --panel: #111827;
+      --panel-2: #1e293b;
+      --border: #334155;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #818cf8;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --red: #ef4444;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    body.light {
+      --bg: #f1f5f9;
+      --panel: #ffffff;
+      --panel-2: #e2e8f0;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #0284c7;
+      --accent-2: #4f46e5;
+      --green: #16a34a;
+      --amber: #d97706;
+      --red: #dc2626;
+      --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding-bottom: 60px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      color: #f8fafc;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .title-block h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .title-block p {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      text-transform: uppercase;
+    }
+
+    .header-controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    header .btn {
+      background: #1e293b;
+      color: #f8fafc;
+      border-color: #475569;
+    }
+
+    .btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); color: #0b1120; border-color: var(--accent); }
+    .btn.danger { background: var(--red); color: #fff; border-color: var(--red); }
+    .btn.success { background: var(--green); color: #052e16; border-color: var(--green); }
+    .btn.active { background: var(--accent); color: #0b1120; border-color: var(--accent); }
+
+    .container {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 20px;
+    }
+
+    /* Nav Tabs */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+      background: var(--panel);
+      padding: 8px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 150px;
+      background: transparent;
+      color: var(--muted);
+      border: none;
+      padding: 11px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: all 0.15s;
+    }
+
+    .tab-btn:hover { color: var(--text); background: var(--panel-2); }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #0b1120;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+    }
+
+    .tab-panel { display: none; animation: fadeIn 0.22s ease; }
+    .tab-panel.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards & Grid */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card h3 {
+      font-size: 0.98rem;
+      color: var(--accent);
+      margin: 14px 0 8px;
+    }
+
+    .muted { color: var(--muted); font-size: 0.9rem; }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+      font-size: 0.92rem;
+    }
+
+    .callout.warn {
+      border-left-color: var(--amber);
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .callout.danger {
+      border-left-color: var(--red);
+      background: rgba(239, 68, 68, 0.12);
+    }
+
+    .callout.good {
+      border-left-color: var(--green);
+      background: rgba(34, 197, 94, 0.1);
+    }
+
+    /* Checklists */
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-size: 0.92rem;
+    }
+
+    .check-item:hover { background: var(--panel-2); }
+    .check-item input { margin-top: 4px; accent-color: var(--green); width: 16px; height: 16px; cursor: pointer; }
+    .check-item.done span { text-decoration: line-through; color: var(--muted); }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.88rem; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* SVG Simulators */
+    .sim-box {
+      background: #060b16;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sim-overlay-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: rgba(34, 197, 94, 0.2);
+      color: #4ade80;
+      border: 1px solid #22c55e;
+      z-index: 2;
+    }
+
+    .sim-overlay-badge.warn {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border-color: #f59e0b;
+    }
+
+    .sim-overlay-badge.stall {
+      background: rgba(239, 68, 68, 0.28);
+      color: #fca5a5;
+      border-color: #ef4444;
+      animation: pulse 0.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-top: 14px;
+      padding: 14px;
+      background: var(--panel-2);
+      border-radius: 10px;
+    }
+
+    .control-group { flex: 1; min-width: 210px; }
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .btn-group { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    /* Instrument Strip */
+    .instruments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .inst {
+      background: #060b16;
+      color: #f8fafc;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    .inst .lbl { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.6px; }
+    .inst .val { font-size: 1.08rem; font-weight: 800; color: #38bdf8; margin-top: 3px; font-variant-numeric: tabular-nums; }
+    .inst .sub { font-size: 0.72rem; color: #cbd5e1; margin-top: 2px; }
+
+    /* Step pills */
+    .step-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+
+    .step-pill {
+      padding: 7px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      font-size: 0.83rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .step-pill.active {
+      background: var(--accent);
+      color: #0b1120;
+      border-color: var(--accent);
+    }
+
+    /* Recovery Trainer */
+    .drill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .drill-btn {
+      padding: 14px;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+
+    .drill-btn:hover { border-color: var(--accent); }
+    .drill-btn.correct { border-color: var(--green); background: rgba(34, 197, 94, 0.18); }
+    .drill-btn.wrong { border-color: var(--red); background: rgba(239, 68, 68, 0.2); }
+
+    /* Accordion */
+    details {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    summary {
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    summary::after { content: "+"; font-size: 1.2rem; color: var(--accent); }
+    details[open] summary::after { content: "−"; }
+    details p { margin-top: 10px; font-size: 0.9rem; color: var(--muted); }
+
+    /* Quiz */
+    .quiz-q {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 14px;
+      background: var(--panel-2);
+    }
+
+    .quiz-opt {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin-top: 8px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.88rem;
+    }
+
+    .quiz-opt:hover { border-color: var(--accent); }
+    .quiz-opt.right { border-color: var(--green); background: rgba(34, 197, 94, 0.18); font-weight: 700; }
+    .quiz-opt.wrong { border-color: var(--red); background: rgba(239, 68, 68, 0.18); }
+    .quiz-exp { margin-top: 8px; font-size: 0.85rem; color: var(--muted); display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="title-block">
+      <h1>🫁 CFI Lesson Plan: Oxygen Systems &amp; 14 CFR § 91.211 <span class="badge">PHAK Ch. 7 &amp; 17 • ACS Area I / IX</span></h1>
+      <p>Interactive Ground Briefing • Supplemental Oxygen, Pressurized Cabins, Mask Rules &amp; Hypoxia Prevention</p>
+    </div>
+    <div class="header-controls">
+      <div class="btn-group">
+        <button class="btn active" id="btnPPL" onclick="setACS('PPL')">PPL ACS</button>
+        <button class="btn" id="btnCPL" onclick="setACS('CPL')">CPL ACS</button>
+      </div>
+      <button class="btn" onclick="toggleTheme()" id="themeBtn">☀️ Light Mode</button>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <!-- Main Navigation -->
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="openTab('tab-brief', this)">1. Briefing &amp; 91.211</button>
+    <button class="tab-btn" onclick="openTab('tab-alt', this)">2. Altitude &amp; 91.211 Lab</button>
+    <button class="tab-btn" onclick="openTab('tab-labs', this)">3. Systems &amp; Pressurization</button>
+    <button class="tab-btn" onclick="openTab('tab-profiles', this)">4. Mission Profiles</button>
+    <button class="tab-btn" onclick="openTab('tab-drill', this)">5. Drill, Errors &amp; Quiz</button>
+  </nav>
+
+  <!-- ==================== TAB 1: BRIEFING & ACS ==================== -->
+  <section id="tab-brief" class="tab-panel active">
+    <div class="grid-2">
+      <div class="card">
+        <h2>🎯 Lesson Objective (In Plain English)</h2>
+        <p>By the end of this lesson, you will know <strong>when</strong> the FAA legally requires oxygen under <strong>14 CFR § 91.211</strong> (unpressurized and pressurized), <strong>which system &amp; mask</strong> to use at each altitude, and how to recognize and recover from <strong>hypoxia</strong> before it incapacitates you.</p>
+
+        <div class="callout">
+          <strong>The #1 Rule of 91.211:</strong> The 12,500 / 14,000 / 15,000 ft rules are based on <strong>Cabin Pressure Altitude</strong> (not just aircraft altitude). For pressurized aircraft, the FL250 / FL350 / FL410 rules are based on <strong>Aircraft Flight Altitude</strong>.
+        </div>
+
+        <h3>The 4 Main Types of Hypoxia</h3>
+        <div class="grid-2" style="gap:10px; margin-top:8px;">
+          <div style="background:var(--panel-2); padding:10px; border-radius:8px;"><strong>1. Hypoxic:</strong> Not enough O₂ in the lungs (altitude—most common in aviation).</div>
+          <div style="background:var(--panel-2); padding:10px; border-radius:8px;"><strong>2. Hypemic:</strong> Blood can't carry O₂ (CO poisoning, smoking, anemia).</div>
+          <div style="background:var(--panel-2); padding:10px; border-radius:8px;"><strong>3. Stagnant:</strong> Blood isn't flowing (high-G maneuvers, extreme cold).</div>
+          <div style="background:var(--panel-2); padding:10px; border-radius:8px;"><strong>4. Histotoxic:</strong> Cells can't use O₂ (alcohol, drugs, narcotics).</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>📋 Pre-Flight Oxygen &amp; High-Altitude Checklist</h2>
+        <p class="muted" style="margin-bottom:10px;">Click to brief each item before any flight above 10,000 ft MSL (or 5,000 ft at night):</p>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span><strong>Aviator's Breathing Oxygen (ABO) Only:</strong> Verify green cylinder is filled with ABO—never medical or industrial O₂ (moisture freezes regulators at altitude).</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span><strong>Quantity &amp; Duration:</strong> Check tank PSI against crew/passenger count and planned time at altitude (+ 10-min reserve above FL250 if pressurized).</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span><strong>Mask / Cannula Check:</strong> Inspect hoses, flow indicators, and seals. Verify cannulas are NOT planned above <strong>18,000 ft MSL</strong>.</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span><strong>Fire Safety (No Oil/Grease):</strong> Keep petroleum, lip balm, and grease away from O₂ fittings—pure O₂ + hydrocarbons can spontaneously ignite.</span></label>
+        <label class="check-item"><input type="checkbox" onchange="toggleCheck(this)"><span><strong>Passenger Briefing &amp; Pulse Oximeter:</strong> Brief passengers on mask donning/flow before climb. Consider O₂ above <strong>10,000 ft day / 5,000 ft night</strong>.</span></label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📏 14 CFR § 91.211 &amp; FAA ACS Requirements <span class="badge" id="acsBadge">Private Pilot (FAA-S-ACS-6C)</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Altitude Band</th>
+            <th>Reference</th>
+            <th>Required Flight Crew</th>
+            <th>Passengers / Occupants</th>
+            <th>ACS Focus</th>
+          </tr>
+        </thead>
+        <tbody id="acsTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ==================== TAB 2: ALTITUDE & 91.211 LAB ==================== -->
+  <section id="tab-alt" class="tab-panel">
+    <div class="card">
+      <h2>📈 Interactive 14 CFR § 91.211 Altitude &amp; Oxygen Lab</h2>
+      <p class="muted" style="margin-bottom:12px;">Drag the altitude slider from Sea Level to <strong>FL450</strong>. Switch between <strong>Unpressurized</strong> and <strong>Pressurized</strong> aircraft, and test crew size / duration to see exact legal requirements and Time of Useful Consciousness (TUC).</p>
+
+      <div class="sim-box">
+        <div id="altStatusBadge" class="sim-overlay-badge">NO O₂ LEGALLY REQUIRED</div>
+        <svg id="altSvg" viewBox="0 0 760 320" width="100%" height="320">
+          <!-- Altitude Atmosphere Gradient -->
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#020617" />
+              <stop offset="45%" stop-color="#0f172a" />
+              <stop offset="100%" stop-color="#1e3a5f" />
+            </linearGradient>
+          </defs>
+          <rect width="760" height="320" fill="url(#skyGrad)" />
+
+          <!-- Legal Threshold Lines -->
+          <!-- Scale: y = 290 - (alt / 45000) * 260 -->
+          <!-- 41,000 ft: y = 53 -->
+          <line x1="85" y1="53" x2="735" y2="53" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6 4" />
+          <text x="92" y="48" fill="#fca5a5" font-size="10" font-weight="700">FL 410 — 1 Pilot MUST Wear Mask Always (Even w/ 2 Pilots)</text>
+
+          <!-- 35,000 ft: y = 88 -->
+          <line x1="85" y1="88" x2="735" y2="88" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 4" />
+          <text x="92" y="83" fill="#fcd34d" font-size="10" font-weight="700">FL 350 — 1 Pilot Mask Rule (or 2 Pilots w/ Quick-Donning 5-Sec Masks)</text>
+
+          <!-- 25,000 ft: y = 146 -->
+          <line x1="85" y1="146" x2="735" y2="146" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="6 4" />
+          <text x="92" y="141" fill="#c7d2fe" font-size="10" font-weight="700">FL 250 — Pressurized: 10-Min Emergency O₂ Supply for All Occupants</text>
+
+          <!-- 18,000 ft: y = 186 -->
+          <line x1="85" y1="186" x2="735" y2="186" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3 4" />
+          <text x="92" y="182" fill="#7dd3fc" font-size="10" font-weight="700">18,000 ft — Max Nasal Cannula Limit (Mask Required Above)</text>
+
+          <!-- 15,000 ft: y = 203 -->
+          <line x1="85" y1="203" x2="735" y2="203" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="5 3" />
+          <text x="92" y="199" fill="#fca5a5" font-size="10" font-weight="700">15,000 ft — Occupants Provided O₂</text>
+
+          <!-- 14,000 ft: y = 209 -->
+          <line x1="85" y1="209" x2="735" y2="209" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="5 3" />
+          <text x="360" y="219" fill="#fcd34d" font-size="10" font-weight="700">14,000 ft — Crew Continuous</text>
+
+          <!-- 12,500 ft: y = 218 -->
+          <line x1="85" y1="218" x2="735" y2="218" stroke="#22c55e" stroke-width="1.2" stroke-dasharray="5 3" />
+          <text x="92" y="229" fill="#86efac" font-size="10" font-weight="700">12,500 ft — Crew > 30 Min</text>
+
+          <!-- Altitude Tape Left -->
+          <line x1="78" y1="25" x2="78" y2="295" stroke="#475569" stroke-width="2" />
+          <text x="14" y="34" fill="#94a3b8" font-size="10" font-weight="700">FL450</text>
+          <text x="14" y="92" fill="#94a3b8" font-size="10" font-weight="700">FL350</text>
+          <text x="14" y="150" fill="#94a3b8" font-size="10" font-weight="700">FL250</text>
+          <text x="14" y="207" fill="#94a3b8" font-size="10" font-weight="700">15,000</text>
+          <text x="14" y="293" fill="#94a3b8" font-size="10" font-weight="700">0 ft</text>
+
+          <!-- Moving Airplane Marker -->
+          <g id="altPlaneGroup" transform="translate(610, 232)" style="transition: transform 0.2s ease;">
+            <line x1="-530" y1="0" x2="-26" y2="0" stroke="#38bdf8" stroke-width="1.5" opacity="0.5" />
+            <path d="M -24,0 L 18,0 L 24,-3 L 18,-6 L -6,-6 L -16,-15 L -22,-15 L -16,-6 L -24,-6 L -22,0 Z" fill="#f8fafc" stroke="#38bdf8" stroke-width="1.5" />
+            <rect x="30" y="-14" width="84" height="22" rx="5" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+            <text id="altPlaneLabel" x="72" y="1" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="800">10,000 ft</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="controls-bar">
+        <div class="control-group">
+          <label>
+            <span>Aircraft Altitude (MSL / FL)</span>
+            <span id="altReadout" style="color:var(--accent)">10,000 ft</span>
+          </label>
+          <input type="range" id="altSlider" min="0" max="45000" step="500" value="10000" oninput="updateAltLab()" />
+        </div>
+
+        <div class="control-group">
+          <label><span>Cabin Type</span></label>
+          <div class="btn-group">
+            <button class="btn active" id="cabUnpress" onclick="setCabinType('unpress')">Unpressurized</button>
+            <button class="btn" id="cabPress" onclick="setCabinType('press')">Pressurized (8,000 ft Cabin)</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label><span>Flight Conditions</span></label>
+          <div class="btn-group">
+            <button class="btn" id="btnOver30" onclick="toggleOver30()">Time &gt; 30 min: OFF</button>
+            <button class="btn active" id="btnTwoPilot" onclick="toggleCrew()">2 Pilots + Quick-Don: ON</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruments">
+        <div class="inst"><div class="lbl">Aircraft Alt</div><div class="val" id="iAcAlt">10,000 ft</div><div class="sub">MSL / FL</div></div>
+        <div class="inst"><div class="lbl">Cabin Alt</div><div class="val" id="iCabAlt">10,000 ft</div><div class="sub" id="iCabSub">Unpressurized</div></div>
+        <div class="inst"><div class="lbl">Crew Rule</div><div class="val" id="iCrewRule">None</div><div class="sub" id="iCrewSub">91.211(a)</div></div>
+        <div class="inst"><div class="lbl">Pax Rule</div><div class="val" id="iPaxRule">None</div><div class="sub" id="iPaxSub">Occupants</div></div>
+        <div class="inst"><div class="lbl">Est. TUC</div><div class="val" id="iTUC">Unlimited</div><div class="sub">If Unprotected</div></div>
+      </div>
+
+      <div class="callout" id="altExplanation" style="margin-top:14px;">
+        <strong>10,000 ft MSL (Unpressurized):</strong> No oxygen is legally required by 14 CFR § 91.211, though the FAA recommends supplemental oxygen above 10,000 ft during the day and above <strong>5,000 ft at night</strong> to protect night vision.
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAB 3: SYSTEMS & PRESSURIZATION LABS ==================== -->
+  <section id="tab-labs" class="tab-panel">
+    <div class="grid-2">
+      <!-- LAB A: OXYGEN SYSTEM & MASK COMPATIBILITY -->
+      <div class="card">
+        <h2>🎭 Lab A: Oxygen System &amp; Mask Matcher</h2>
+        <p class="muted" style="margin-bottom:10px;">Select a <strong>Delivery System</strong> and a <strong>Mask/Cannula</strong>, then test them at your target altitude to spot illegal or dangerous setups (like the 18,000 ft cannula trap).</p>
+
+        <div class="controls-bar" style="margin-top:0;">
+          <div class="control-group">
+            <label><span>1. Oxygen System</span></label>
+            <div class="btn-group">
+              <button class="btn active" id="sysCont" onclick="setSys('cont')">Continuous-Flow</button>
+              <button class="btn" id="sysDil" onclick="setSys('dil')">Diluter-Demand</button>
+              <button class="btn" id="sysPres" onclick="setSys('pres')">Pressure-Demand</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <label><span>2. Mask / Interface</span></label>
+            <div class="btn-group">
+              <button class="btn active" id="mskCan" onclick="setMask('can')">Nasal Cannula</button>
+              <button class="btn" id="mskReb" onclick="setMask('reb')">Rebreather Mask</button>
+              <button class="btn" id="mskQD" onclick="setMask('qd')">Quick-Donning Mask</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <label><span>3. Test Altitude</span><span id="sysAltVal" style="color:var(--accent)">16,000 ft</span></label>
+            <input type="range" id="sysAltSlider" min="10000" max="45000" step="1000" value="16000" oninput="updateSysLab()" />
+          </div>
+        </div>
+
+        <div class="instruments">
+          <div class="inst"><div class="lbl">Max System Alt</div><div class="val" id="sMaxAlt">28,000 ft</div><div class="sub">Design Limit</div></div>
+          <div class="inst"><div class="lbl">Max Mask Alt</div><div class="val" id="sMaskAlt">18,000 ft</div><div class="sub">FAA Limit</div></div>
+          <div class="inst"><div class="lbl">Setup Status</div><div class="val" id="sVerdict" style="color:#4ade80">LEGAL</div><div class="sub" id="sVerdictSub">Safe</div></div>
+        </div>
+
+        <div class="callout good" id="sysExplain" style="margin-top:12px;">
+          <strong>Continuous-Flow + Nasal Cannula at 16,000 ft:</strong> Legal and common in GA aircraft. Continuous-flow delivers a steady stream of O₂ regardless of breathing rate. Remember: cannulas are prohibited above 18,000 ft MSL.
+        </div>
+      </div>
+
+      <!-- LAB B: PRESSURIZED CABIN & 91.211(b) TRAP -->
+      <div class="card">
+        <h2>✈️ Lab B: Pressurized Flight Deck Scenarios (FL380)</h2>
+        <p class="muted" style="margin-bottom:10px;">You are flying a pressurized commercial jet at <strong>FL380</strong> (Cabin Alt: 7,500 ft) with <strong>2 pilots</strong> and quick-donning masks. Test each real-world scenario below to see what <strong>91.211(b)</strong> demands.</p>
+
+        <div class="sim-box">
+          <div id="pressBadge" class="sim-overlay-badge">NORMAL OPS • MASKS READY</div>
+          <svg viewBox="0 0 420 200" width="100%" height="200">
+            <!-- Cockpit Outline -->
+            <rect x="20" y="25" width="380" height="150" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2" />
+            <text x="36" y="48" fill="#94a3b8" font-size="11" font-weight="700">FLIGHT DECK • FL380 • CABIN: <tspan id="svgCabAlt" fill="#38bdf8">7,500 FT</tspan></text>
+
+            <!-- Left Seat (Captain) -->
+            <g transform="translate(115, 112)">
+              <circle cx="0" cy="-16" r="18" fill="#cbd5e1" />
+              <rect x="-24" y="6" width="48" height="34" rx="8" fill="#475569" />
+              <!-- Mask overlay -->
+              <path id="p1Mask" d="M -10,-16 L 10,-16 L 6,-4 L -6,-4 Z" fill="#ef4444" opacity="0" />
+              <text x="0" y="54" text-anchor="middle" fill="#f8fafc" font-size="11" font-weight="700">PILOT 1 (PF)</text>
+            </g>
+
+            <!-- Right Seat (FO) -->
+            <g id="p2Group" transform="translate(305, 112)" style="transition: opacity 0.4s;">
+              <circle cx="0" cy="-16" r="18" fill="#cbd5e1" />
+              <rect x="-24" y="6" width="48" height="34" rx="8" fill="#475569" />
+              <path id="p2Mask" d="M -10,-16 L 10,-16 L 6,-4 L -6,-4 Z" fill="#ef4444" opacity="0" />
+              <text x="0" y="54" text-anchor="middle" fill="#f8fafc" font-size="11" font-weight="700">PILOT 2 (PM)</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="btn-group" style="margin-top:12px;">
+          <button class="btn active" id="scNorm" onclick="setPressScenario('normal')">Normal (2 Pilots)</button>
+          <button class="btn warn" id="scLeave" onclick="setPressScenario('leave')">🚻 Pilot 2 Leaves Seat</button>
+          <button class="btn danger" id="sc420" onclick="setPressScenario('fl420')">⬆️ Climb to FL420</button>
+          <button class="btn danger" id="scDecomp" onclick="setPressScenario('decomp')">💥 Rapid Decomp</button>
+        </div>
+
+        <div class="callout" id="pressExplain" style="margin-top:12px;">
+          <strong>Normal Cruise at FL380 (2 Pilots):</strong> Neither pilot needs to wear a mask because you are at or below FL410, there are 2 pilots at the controls, and both have <strong>quick-donning masks</strong> (1 hand, ≤ 5 seconds).
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAB 4: MISSION PROFILES ==================== -->
+  <section id="tab-profiles" class="tab-panel">
+    <div class="card">
+      <h2>
+        <span id="profileTitle">⛰️ Unpressurized Cross-Country (14,500 ft MSL)</span>
+        <div class="btn-group">
+          <button class="btn active" id="btnMUnpress" onclick="selectMission('unpress')">Unpressurized (PPL)</button>
+          <button class="btn" id="btnMPress" onclick="selectMission('press')">Pressurized Jet (CPL)</button>
+          <button class="btn primary" id="btnPlay" onclick="toggleAutoPlay()">▶ Auto-Fly</button>
+        </div>
+      </h2>
+      <p class="muted" id="profileDesc">Step through a high-altitude mountain crossing in a normally aspirated or turbocharged piston single.</p>
+
+      <div class="step-pills" id="stepPills"></div>
+
+      <div class="sim-box">
+        <svg id="profileSvg" viewBox="0 0 820 260" width="100%" height="260">
+          <!-- Reference Line -->
+          <line x1="30" y1="150" x2="790" y2="150" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="6 4" />
+          <text id="profRefLine" x="35" y="144" fill="#fcd34d" font-size="10" font-weight="700">12,500 ft MSL — 91.211(a) THRESHOLD</text>
+
+          <path id="flightPath" fill="none" stroke="#38bdf8" stroke-width="3.5" stroke-dasharray="8 6" />
+          <g id="waypointNodes"></g>
+
+          <g id="profilePlane" transform="translate(80,200) rotate(0)" style="transition: transform 0.55s ease;">
+            <path d="M -22,0 L 18,0 L 24,-3 L 18,-6 L -6,-6 L -16,-15 L -22,-15 L -16,-6 L -24,-6 L -22,0 Z" fill="#f8fafc" stroke="#38bdf8" stroke-width="1.5" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="instruments">
+        <div class="inst"><div class="lbl">Aircraft Alt</div><div class="val" id="pAcAlt">5,500 ft</div><div class="sub" id="pAcSub">Climb</div></div>
+        <div class="inst"><div class="lbl">Cabin Alt</div><div class="val" id="pCabAlt">5,500 ft</div><div class="sub">Pressure Alt</div></div>
+        <div class="inst"><div class="lbl">O₂ System</div><div class="val" id="pSys">Standby</div><div class="sub">Flow Status</div></div>
+        <div class="inst"><div class="lbl">91.211 Status</div><div class="val" id="pReg">Not Req</div><div class="sub">Legal Rule</div></div>
+        <div class="inst"><div class="lbl">Hypoxia Risk</div><div class="val" id="pRisk">Low</div><div class="sub">Physiology</div></div>
+      </div>
+
+      <div class="grid-2" style="margin-top:16px;">
+        <div class="callout" id="stepActionBox">
+          <strong>Pilot Action:</strong> <span id="stepActionText"></span>
+        </div>
+        <div class="callout good" id="stepCfiBox">
+          <strong>CFI Coaching Cue:</strong> <span id="stepCfiText"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAB 5: DRILL, ERRORS & QUIZ ==================== -->
+  <section id="tab-drill" class="tab-panel">
+    <div class="card">
+      <h2>🚨 Interactive Rapid Decompression / Hypoxia Recovery Drill</h2>
+      <p class="muted">You are at FL360 and the cabin altitude warning horn blares—you have <strong>~15–30 seconds</strong> of Time of Useful Consciousness! Click the <strong>4 emergency actions in the exact correct order</strong>.</p>
+
+      <div class="callout danger" id="drillStatus" style="margin-top:12px;">
+        <strong>CABIN ALTITUDE WARNING!</strong> Select Step 1 of 4:
+      </div>
+
+      <div class="drill-grid" id="drillButtons"></div>
+      <button class="btn" onclick="initDrill()">↺ Reset Emergency Drill</button>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>⚠️ Common PPL / CPL Student Errors &amp; Fixes</h2>
+        <details open>
+          <summary>1. Confusing Aircraft Altitude vs. Cabin Pressure Altitude</summary>
+          <p><strong>Why it happens:</strong> Students memorize "12,500 / 14,000 / 15,000" and forget it applies to <em>cabin pressure altitude</em>.<br><strong>CFI Fix:</strong> Ask: "If you're in a pressurized King Air at 18,000 ft with a 6,000 ft cabin, do you need oxygen under 91.211(a)?" Answer: No—cabin altitude is below 12,500 ft.</p>
+        </details>
+        <details>
+          <summary>2. Saying Passengers Must "Use" Oxygen Above 15,000 ft</summary>
+          <p><strong>Why it happens:</strong> Assuming crew and passenger rules are identical.<br><strong>CFI Fix:</strong> Highlight the exact wording of 91.211(a)(3): Crew must be <em>provided with and use</em> O₂; occupants above 15,000 ft must only be <em>provided with</em> O₂ (though smart PICs brief them to use it!).</p>
+        </details>
+        <details>
+          <summary>3. Using a Nasal Cannula Above 18,000 ft MSL</summary>
+          <p><strong>Why it happens:</strong> Cannulas are comfortable and students forget their ceiling.<br><strong>CFI Fix:</strong> Above 18,000 ft MSL, ambient pressure is too low for a nasal cannula to prevent hypoxia—a mask covering nose and mouth is required.</p>
+        </details>
+        <details>
+          <summary>4. Forgetting the "One Pilot Leaves the Controls" Rule (&gt; FL350)</summary>
+          <p><strong>Why it happens:</strong> Remembering the 2-pilot quick-donning exception and forgetting what happens during a lavatory break.<br><strong>CFI Fix:</strong> Above FL350, the instant one pilot leaves their seat, the remaining pilot <strong>must put on and use</strong> their mask until the other pilot returns.</p>
+        </details>
+        <details>
+          <summary>5. Filling Aircraft Tanks with Medical or Welding Oxygen</summary>
+          <p><strong>Why it happens:</strong> Thinking "oxygen is oxygen."<br><strong>CFI Fix:</strong> Medical O₂ contains moisture that freezes in high-altitude regulators; industrial/welding O₂ contains impurities. Only <strong>Aviator's Breathing Oxygen (ABO)</strong> is legal.</p>
+        </details>
+      </div>
+
+      <div class="card">
+        <h2>🎓 Checkride Oral Quiz <span class="badge" id="quizScore">Score: 0 / 5</span></h2>
+        <div id="quizContainer"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // ==================== THEME & TABS ====================
+  function toggleTheme() {
+    document.body.classList.toggle('light');
+    document.getElementById('themeBtn').textContent =
+      document.body.classList.contains('light') ? '🌙 Dark Mode' : '☀️ Light Mode';
+  }
+
+  function openTab(tabId, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleCheck(box) {
+    box.parentElement.classList.toggle('done', box.checked);
+  }
+
+  // ==================== ACS TOGGLE ====================
+  const acsData = {
+    PPL: {
+      badge: 'Private Pilot (FAA-S-ACS-6C • Area I.H & I.G)',
+      rows: [
+        ['> 12,500 to 14,000 ft', 'Cabin Pressure Alt', 'Provided & used if > 30 min', 'Not legally required', '91.211(a)(1) & Hypoxia cues'],
+        ['> 14,000 ft MSL', 'Cabin Pressure Alt', 'Provided & used entire time', 'Not legally required', '91.211(a)(2) Continuous crew O₂'],
+        ['> 15,000 ft MSL', 'Cabin Pressure Alt', 'Provided & used entire time', 'Provided with O₂', '91.211(a)(3) Pax briefing'],
+        ['Above 18,000 ft MSL', 'Mask Limit (AIM)', 'Mask required (no cannula)', 'Mask required', 'Continuous-flow vs. Demand']
+      ]
+    },
+    CPL: {
+      badge: 'Commercial Pilot (FAA-S-ACS-7B • Area I.G & IX.B)',
+      rows: [
+        ['> 12,500 to 14,000 ft', 'Cabin Pressure Alt', 'Provided & used if > 30 min', 'Not legally required', '91.211(a)(1) Unpressurized/Decomp'],
+        ['> 14,000 / > 15,000 ft', 'Cabin Pressure Alt', 'Continuous (>14k)', 'Provided (>15k)', '91.211(a)(2)-(3) + ABO specs'],
+        ['Above FL 250', 'Aircraft Flight Alt', '10-min emergency supply', '10-min emergency supply', '91.211(b)(1)(i) Pressurized'],
+        ['Above FL 350 to FL 410', 'Aircraft Flight Alt', '1 pilot wears mask (unless 2 pilots + 5-sec quick-don)', '10-min emergency supply', '91.211(b)(1)(ii) & Seat-leave rule'],
+        ['Above FL 410', 'Aircraft Flight Alt', '1 pilot MUST wear & use mask at all times', '10-min emergency supply', '91.211(b)(1)(ii) + Pressure-Demand']
+      ]
+    }
+  };
+
+  function setACS(level) {
+    document.getElementById('btnPPL').classList.toggle('active', level === 'PPL');
+    document.getElementById('btnCPL').classList.toggle('active', level === 'CPL');
+    const data = acsData[level];
+    document.getElementById('acsBadge').textContent = data.badge;
+    document.getElementById('acsTableBody').innerHTML = data.rows.map(r =>
+      `<tr>${r.map((c, i) => `<td>${i === 0 ? `<strong>${c}</strong>` : c}</td>`).join('')}</tr>`
+    ).join('');
+  }
+
+  // ==================== TAB 2: ALTITUDE & 91.211 LAB ====================
+  let cabinType = 'unpress';
+  let over30 = false;
+  let twoPilotQD = true;
+
+  function setCabinType(type) {
+    cabinType = type;
+    document.getElementById('cabUnpress').classList.toggle('active', type === 'unpress');
+    document.getElementById('cabPress').classList.toggle('active', type === 'press');
+    updateAltLab();
+  }
+
+  function toggleOver30() {
+    over30 = !over30;
+    const btn = document.getElementById('btnOver30');
+    btn.classList.toggle('active', over30);
+    btn.textContent = `Time > 30 min: ${over30 ? 'ON' : 'OFF'}`;
+    updateAltLab();
+  }
+
+  function toggleCrew() {
+    twoPilotQD = !twoPilotQD;
+    const btn = document.getElementById('btnTwoPilot');
+    btn.classList.toggle('active', twoPilotQD);
+    btn.textContent = `2 Pilots + Quick-Don: ${twoPilotQD ? 'ON' : 'OFF'}`;
+    updateAltLab();
+  }
+
+  function getTUC(alt) {
+    if (alt < 15000) return 'Unlimited';
+    if (alt < 20000) return '30+ min';
+    if (alt < 25000) return '5–12 min';
+    if (alt < 30000) return '3–5 min';
+    if (alt < 35000) return '1–2 min';
+    if (alt < 40000) return '30–60 sec';
+    return '9–15 sec!';
+  }
+
+  function updateAltLab() {
+    const alt = parseInt(document.getElementById('altSlider').value, 10);
+    const altLabel = alt >= 18000 ? `FL${Math.round(alt / 100)}` : `${alt.toLocaleString()} ft`;
+    document.getElementById('altReadout').textContent = altLabel;
+
+    // Move SVG plane: y = 290 - (alt / 45000) * 260
+    const yPos = 290 - (alt / 45000) * 260;
+    document.getElementById('altPlaneGroup').setAttribute('transform', `translate(610, ${yPos.toFixed(1)})`);
+    document.getElementById('altPlaneLabel').textContent = altLabel;
+
+    const cabAlt = cabinType === 'press' ? Math.min(alt, 8000) : alt;
+    document.getElementById('iAcAlt').textContent = altLabel;
+    document.getElementById('iCabAlt').textContent = cabAlt.toLocaleString() + ' ft';
+    document.getElementById('iCabSub').textContent = cabinType === 'press' ? 'Pressurized' : 'Unpressurized';
+    document.getElementById('iTUC').textContent = getTUC(alt);
+
+    let crewRule = 'None';
+    let paxRule = 'None';
+    let badgeClass = 'sim-overlay-badge';
+    let badgeText = 'NO O₂ LEGALLY REQUIRED';
+    let expClass = 'callout';
+    let expText = '';
+
+    if (cabinType === 'unpress') {
+      if (alt <= 12500) {
+        crewRule = 'Not Req';
+        paxRule = 'Not Req';
+        expText = `<strong>${altLabel} (Unpressurized):</strong> No legal O₂ requirement under 91.211. FAA recommends O₂ above 10,000 ft day / 5,000 ft night.`;
+      } else if (alt <= 14000) {
+        if (over30) {
+          crewRule = 'USE O₂';
+          badgeClass = 'sim-overlay-badge warn';
+          badgeText = 'CREW O₂ REQUIRED (>30 MIN)';
+          expClass = 'callout warn';
+          expText = `<strong>${altLabel} (> 30 min):</strong> Under 91.211(a)(1), required minimum flight crew must be provided with and <strong>use</strong> supplemental oxygen for the portion exceeding 30 minutes.`;
+        } else {
+          crewRule = 'Req >30m';
+          badgeClass = 'sim-overlay-badge';
+          badgeText = 'LEGAL ≤ 30 MIN WITHOUT O₂';
+          expText = `<strong>${altLabel} (≤ 30 min):</strong> Legal without oxygen for up to 30 minutes. Toggle "Time > 30 min" ON to see the rule kick in.`;
+        }
+      } else if (alt <= 15000) {
+        crewRule = 'CONTINUOUS';
+        badgeClass = 'sim-overlay-badge warn';
+        badgeText = 'CREW O₂ REQUIRED ENTIRE TIME';
+        expClass = 'callout warn';
+        expText = `<strong>${altLabel}:</strong> Under 91.211(a)(2), required flight crew must use supplemental oxygen for the <strong>entire flight time</strong> above 14,000 ft MSL.`;
+      } else {
+        crewRule = 'CONTINUOUS';
+        paxRule = 'PROVIDED';
+        badgeClass = 'sim-overlay-badge stall';
+        badgeText = alt > 18000 ? 'CREW USE + PAX PROVIDED (NO CANNULA)' : 'CREW USE + PAX PROVIDED';
+        expClass = 'callout danger';
+        expText = `<strong>${altLabel} (Unpressurized):</strong> Under 91.211(a)(3), crew must use O₂ continuously and <strong>every occupant must be provided with O₂</strong>. ${alt > 18000 ? 'Above 18,000 ft, nasal cannulas are prohibited—use a mask!' : ''}`;
+      }
+    } else {
+      // Pressurized (8,000 ft cabin)
+      if (alt <= 25000) {
+        crewRule = 'Not Req';
+        paxRule = 'Not Req';
+        expText = `<strong>${altLabel} (Pressurized, 8,000 ft Cabin):</strong> Because cabin pressure altitude is below 12,500 ft and aircraft is at or below FL250, no supplemental O₂ is required by 91.211.`;
+      } else if (alt <= 35000) {
+        crewRule = '10-Min Supply';
+        paxRule = '10-Min Supply';
+        badgeClass = 'sim-overlay-badge warn';
+        badgeText = '10-MIN EMERGENCY O₂ SUPPLY REQ';
+        expClass = 'callout warn';
+        expText = `<strong>${altLabel} (Pressurized):</strong> Under 91.211(b)(1)(i), above FL250 you must carry at least a <strong>10-minute supply</strong> of supplemental oxygen for every occupant in case of rapid decompression.`;
+      } else if (alt <= 41000) {
+        paxRule = '10-Min Supply';
+        if (twoPilotQD) {
+          crewRule = 'Quick-Don Ready';
+          badgeClass = 'sim-overlay-badge warn';
+          badgeText = 'FL350–410: QUICK-DON EXCEPTION ACTIVE';
+          expClass = 'callout warn';
+          expText = `<strong>${altLabel} (2 Pilots + Quick-Donning Masks):</strong> Legal without wearing masks because 2 pilots are at the controls and each has a <strong>quick-donning mask (1 hand, ≤5 sec)</strong>. If one pilot leaves the seat, the other MUST wear their mask!`;
+        } else {
+          crewRule = '1 PILOT WEARS';
+          badgeClass = 'sim-overlay-badge stall';
+          badgeText = '1 PILOT MUST WEAR & USE MASK!';
+          expClass = 'callout danger';
+          expText = `<strong>${altLabel} (Single Pilot or No Quick-Don):</strong> Under 91.211(b)(1)(ii), one pilot at the controls <strong>must wear and use</strong> a secured, sealed oxygen mask at all times above FL350.`;
+        }
+      } else {
+        crewRule = '1 PILOT WEARS';
+        paxRule = '10-Min Supply';
+        badgeClass = 'sim-overlay-badge stall';
+        badgeText = 'ABOVE FL410: 1 PILOT MUST WEAR MASK ALWAYS';
+        expClass = 'callout danger';
+        expText = `<strong>${altLabel} (Above FL410):</strong> Even with 2 pilots and quick-donning masks, <strong>one pilot at the controls MUST wear and use an oxygen mask at all times</strong>. TUC if decompressed is only 9–15 seconds!`;
+      }
+    }
+
+    document.getElementById('iCrewRule').textContent = crewRule;
+    document.getElementById('iPaxRule').textContent = paxRule;
+    document.getElementById('altStatusBadge').className = badgeClass;
+    document.getElementById('altStatusBadge').textContent = badgeText;
+    document.getElementById('altExplanation').className = expClass;
+    document.getElementById('altExplanation').innerHTML = expText;
+  }
+
+  // ==================== TAB 3: SYSTEMS & PRESSURIZATION LABS ====================
+  let selSys = 'cont';
+  let selMask = 'can';
+
+  function setSys(s) {
+    selSys = s;
+    ['cont', 'dil', 'pres'].forEach(k => document.getElementById('sys' + k.charAt(0).toUpperCase() + k.slice(1)).classList.toggle('active', k === s));
+    updateSysLab();
+  }
+
+  function setMask(m) {
+    selMask = m;
+    document.getElementById('mskCan').classList.toggle('active', m === 'can');
+    document.getElementById('mskReb').classList.toggle('active', m === 'reb');
+    document.getElementById('mskQD').classList.toggle('active', m === 'qd');
+    updateSysLab();
+  }
+
+  function updateSysLab() {
+    const alt = parseInt(document.getElementById('sysAltSlider').value, 10);
+    document.getElementById('sysAltVal').textContent = alt.toLocaleString() + ' ft';
+
+    const sysLimits = { cont: 28000, dil: 40000, pres: 45000 };
+    const maskLimits = { can: 18000, reb: 28000, qd: 45000 };
+
+    const sMax = sysLimits[selSys];
+    const mMax = maskLimits[selMask];
+    document.getElementById('sMaxAlt').textContent = sMax === 45000 ? '40,000+ ft' : sMax.toLocaleString() + ' ft';
+    document.getElementById('sMaskAlt').textContent = mMax === 45000 ? '40,000+ ft' : mMax.toLocaleString() + ' ft';
+
+    const verdict = document.getElementById('sVerdict');
+    const sub = document.getElementById('sVerdictSub');
+    const exp = document.getElementById('sysExplain');
+
+    if (selMask === 'can' && alt > 18000) {
+      verdict.textContent = 'ILLEGAL';
+      verdict.style.color = '#ef4444';
+      sub.textContent = 'Cannula > 18k!';
+      exp.className = 'callout danger';
+      exp.innerHTML = `<strong>CANNULA LIMIT EXCEEDED (${alt.toLocaleString()} ft):</strong> Nasal cannulas are prohibited above <strong>18,000 ft MSL</strong>. Switch to a Rebreather or Quick-Donning mask.`;
+    } else if (alt > sMax || alt > mMax) {
+      verdict.textContent = 'UNSAFE';
+      verdict.style.color = '#ef4444';
+      sub.textContent = 'Above Ceiling';
+      exp.className = 'callout danger';
+      exp.innerHTML = `<strong>ALTITUDE EXCEEDS SYSTEM LIMIT:</strong> Above 40,000 ft, you need a <strong>Pressure-Demand</strong> system (forces O₂ into lungs under positive pressure). Continuous-flow tops out ~28,000 ft; Diluter-Demand tops out at 40,000 ft.`;
+    } else {
+      verdict.textContent = 'LEGAL';
+      verdict.style.color = '#4ade80';
+      sub.textContent = 'Proper Match';
+      exp.className = 'callout good';
+      const desc = {
+        cont: 'Continuous-Flow delivers a steady stream of O₂ (wasteful at low altitudes, simple for GA up to ~28,000 ft).',
+        dil: 'Diluter-Demand supplies O₂ only when you inhale, mixing cabin air until 100% O₂ near 34,000 ft (up to 40,000 ft).',
+        pres: 'Pressure-Demand forces 100% O₂ under positive pressure into the lungs—required above 40,000 ft.'
+      };
+      exp.innerHTML = `<strong>Valid Setup at ${alt.toLocaleString()} ft:</strong> ${desc[selSys]}`;
+    }
+  }
+
+  function setPressScenario(sc) {
+    ['scNorm', 'scLeave', 'sc420', 'scDecomp'].forEach(id => document.getElementById(id).classList.remove('active'));
+    const p1m = document.getElementById('p1Mask');
+    const p2m = document.getElementById('p2Mask');
+    const p2g = document.getElementById('p2Group');
+    const badge = document.getElementById('pressBadge');
+    const exp = document.getElementById('pressExplain');
+    const cab = document.getElementById('svgCabAlt');
+
+    if (sc === 'normal') {
+      document.getElementById('scNorm').classList.add('active');
+      p1m.setAttribute('opacity', '0'); p2m.setAttribute('opacity', '0'); p2g.setAttribute('opacity', '1');
+      cab.textContent = '7,500 FT';
+      badge.className = 'sim-overlay-badge'; badge.textContent = 'NORMAL OPS • MASKS READY';
+      exp.className = 'callout';
+      exp.innerHTML = '<strong>Normal Cruise at FL380 (2 Pilots):</strong> Neither pilot needs to wear a mask because you are ≤ FL410, 2 pilots are at the controls, and both have <strong>quick-donning masks</strong> (1 hand, ≤ 5 seconds).';
+    } else if (sc === 'leave') {
+      document.getElementById('scLeave').classList.add('active');
+      p1m.setAttribute('opacity', '1'); p2m.setAttribute('opacity', '0'); p2g.setAttribute('opacity', '0.2');
+      cab.textContent = '7,500 FT';
+      badge.className = 'sim-overlay-badge warn'; badge.textContent = 'PILOT 1 MUST WEAR MASK!';
+      exp.className = 'callout warn';
+      exp.innerHTML = '<strong>91.211(b)(2) Seat-Leave Rule:</strong> Above FL350, if one pilot leaves the controls for any reason, the <strong>remaining pilot MUST put on and use</strong> their oxygen mask until the other pilot returns!';
+    } else if (sc === 'fl420') {
+      document.getElementById('sc420').classList.add('active');
+      p1m.setAttribute('opacity', '1'); p2m.setAttribute('opacity', '0'); p2g.setAttribute('opacity', '1');
+      cab.textContent = '8,000 FT';
+      badge.className = 'sim-overlay-badge stall'; badge.textContent = 'FL420: 1 PILOT MASK MANDATORY';
+      exp.className = 'callout danger';
+      exp.innerHTML = '<strong>Above FL410 Rule:</strong> The 2-pilot quick-donning exception <strong>ends at FL410</strong>. At FL420, at least one pilot at the controls MUST wear and use an oxygen mask continuously.';
+    } else {
+      document.getElementById('scDecomp').classList.add('active');
+      p1m.setAttribute('opacity', '1'); p2m.setAttribute('opacity', '1'); p2g.setAttribute('opacity', '1');
+      cab.textContent = '38,000 FT!';
+      badge.className = 'sim-overlay-badge stall'; badge.textContent = '🚨 RAPID DECOMP • DON MASKS NOW!';
+      exp.className = 'callout danger';
+      exp.innerHTML = '<strong>Rapid Decompression at FL380:</strong> TUC is only <strong>15–30 seconds</strong>! Both pilots immediately don quick-donning masks (100% O₂), establish crew comm, and initiate an emergency descent to 10,000 ft (or MEA).';
+    }
+  }
+
+  // ==================== TAB 4: MISSION PROFILES ====================
+  const missions = {
+    unpress: {
+      title: '⛰️ Unpressurized Cross-Country (14,500 ft MSL)',
+      desc: 'Crossing high terrain in a piston single (e.g., Phoenix to Denver) using a portable continuous-flow oxygen system.',
+      ref: '12,500 ft MSL — 91.211(a) THRESHOLD',
+      path: 'M 70,215 L 200,175 L 340,140 L 490,105 L 620,105 L 750,195',
+      steps: [
+        { x: 70, y: 215, rot: -10, label: '1. Climb 5.5k', ac: '5,500 ft', sub: 'Climbing', cab: '5,500 ft', sys: 'Standby', reg: 'Not Req', risk: 'Low',
+          action: 'Verify portable O₂ tank is secured, regulator valve is accessible, and cannulas are plugged in before climbing.',
+          cfi: 'Never wait until 13,000 ft to untangle hoses—set up oxygen on the ground or in low-altitude cruise.' },
+        { x: 200, y: 175, rot: -8, label: '2. 10,000 ft', ac: '10,000 ft', sub: 'Night/Day Check', cab: '10,000 ft', sys: 'Recommended', reg: 'Not Req', risk: 'Mild',
+          action: 'Monitor pulse oximeter (SpO₂). Consider turning on O₂ now—especially at night (night vision degrades above 5,000 ft).',
+          cfi: 'Legal minimums are not always safe minimums. Starting O₂ at 10,000 ft keeps you sharp.' },
+        { x: 340, y: 140, rot: -6, label: '3. 13,000 ft', ac: '13,000 ft', sub: '30-Min Clock', cab: '13,000 ft', sys: 'Cannula ON', reg: 'Crew >30m', risk: 'Moderate',
+          action: 'Start a timer if not already on O₂. Required flight crew must use O₂ for any time exceeding 30 minutes between 12,500 and 14,000 ft.',
+          cfi: 'Don’t try to "beat the 30-minute clock" by dipping to 12,400 ft—just turn the oxygen on.' },
+        { x: 490, y: 105, rot: 0, label: '4. 14,500 ft', ac: '14,500 ft', sub: 'Cruise', cab: '14,500 ft', sys: 'Cannula ON', reg: 'Crew Always', risk: 'High w/o O₂',
+          action: 'Crew MUST use O₂ continuously above 14,000 ft. Check flow indicator green/bobbin and verify passengers feel normal.',
+          cfi: 'If we climb just 600 ft higher (above 15,000 ft), we must legally provide oxygen to every passenger.' },
+        { x: 620, y: 105, rot: 0, label: '5. 15,500 ft', ac: '15,500 ft', sub: 'Terrain Clear', cab: '15,500 ft', sys: 'All Pax O₂', reg: 'Pax Provided', risk: 'High w/o O₂',
+          action: 'Provide O₂ to all occupants under 91.211(a)(3). Monitor tank PSI closely and stay below 18,000 ft if using nasal cannulas.',
+          cfi: 'Check your flow meter every 15 minutes—a kinked hose at 15,500 ft can sneak up on you silently.' },
+        { x: 750, y: 195, rot: 12, label: '6. Descent', ac: '8,500 ft', sub: 'Descending', cab: '8,500 ft', sys: 'OFF / Stowed', reg: 'Not Req', risk: 'Low',
+          action: 'Once below 10,000 ft MSL, shut off the cylinder valve, bleed pressure if required by POH, and stow hoses away from flight controls.',
+          cfi: 'Turning off the main tank valve prevents slow leaks from emptying your cylinder overnight.' }
+      ]
+    },
+    press: {
+      title: '✈️ Pressurized Turbine Mission (FL380)',
+      desc: 'Commercial pressurized flight demonstrating 91.211(b) reserves, quick-donning masks, and FL350/FL410 rules.',
+      ref: 'FL250 / FL350 — 91.211(b) PRESSURIZED THRESHOLDS',
+      path: 'M 70,210 L 200,150 L 340,100 L 490,75 L 620,55 L 750,185',
+      steps: [
+        { x: 70, y: 210, rot: -12, label: '1. Pre-Flight', ac: '0 ft', sub: 'Ramp Check', cab: '0 ft', sys: 'Quick-Don Test', reg: '91.211(b)', risk: 'None',
+          action: 'Test both quick-donning masks (press-to-test), verify 100% O₂ setting, and confirm bottle PSI meets 10-min reserve for all occupants.',
+          cfi: 'Verify the mask can be donned with ONE hand in ≤ 5 seconds—never bury it under charts or headsets.' },
+        { x: 200, y: 150, rot: -10, label: '2. FL260', ac: 'FL260', sub: 'Climbing', cab: '5,500 ft', sys: '10-Min Ready', reg: '91.211(b)(1)', risk: 'Low',
+          action: 'Passing FL250: Confirm pressurization differential is normal and passenger drop-down masks are armed (10-min minimum supply).',
+          cfi: 'Even though the cabin is 5,500 ft, aircraft altitude > FL250 triggers the 10-minute occupant reserve.' },
+        { x: 340, y: 100, rot: -6, label: '3. FL360', ac: 'FL360', sub: '2 Pilots', cab: '7,200 ft', sys: 'Quick-Don Ready', reg: '2-Pilot Exc.', risk: 'Low (Press)',
+          action: 'Above FL350 with 2 pilots and quick-donning masks: masks remain in ready position. Keep cabin altitude gauge in your scan.',
+          cfi: 'If this were a single-pilot jet (like a Citation Mustang), you would have to put the mask on right now!' },
+        { x: 490, y: 75, rot: 0, label: '4. Seat Leave', ac: 'FL380', sub: '1 Pilot Leaves', cab: '7,500 ft', sys: 'PF Mask ON', reg: '91.211(b)(2)', risk: 'Protected',
+          action: 'Pilot 2 steps out to the lavatory. Pilot 1 MUST immediately don and use their oxygen mask until Pilot 2 is strapped back in.',
+          cfi: 'This is a classic Commercial & ATP checkride gotcha—always don the mask BEFORE the other pilot unbuckles.' },
+        { x: 620, y: 55, rot: 0, label: '5. FL420', ac: 'FL420', sub: 'High Cruise', cab: '8,000 ft', sys: '1 Mask ON', reg: '> FL410 Rule', risk: 'TUC 9–15s',
+          action: 'Above FL410: Even with 2 pilots, one pilot at the controls MUST wear and use an oxygen mask continuously (Pressure-Demand system).',
+          cfi: 'At FL420, rapid decompression leaves you under 15 seconds of useful consciousness—no time to reach for a mask.' },
+        { x: 750, y: 185, rot: 12, label: '6. Descent', ac: '12,000 ft', sub: 'Arrival', cab: '4,000 ft', sys: 'Stowed', reg: 'Normal', risk: 'Low',
+          action: 'Monitor cabin pressurization controller during descent to ensure smooth cabin rate of descent and zero differential at landing.',
+          cfi: 'Check the cabin altimeter before landing so you don’t open the door with residual pressure.' }
+      ]
+    }
+  };
+
+  let activeMission = 'unpress';
+  let activeStep = 0;
+  let playTimer = null;
+
+  function selectMission(key) {
+    stopAutoPlay();
+    activeMission = key;
+    activeStep = 0;
+    document.getElementById('btnMUnpress').classList.toggle('active', key === 'unpress');
+    document.getElementById('btnMPress').classList.toggle('active', key === 'press');
+    renderMission();
+  }
+
+  function renderMission() {
+    const m = missions[activeMission];
+    document.getElementById('profileTitle').textContent = m.title;
+    document.getElementById('profileDesc').textContent = m.desc;
+    document.getElementById('profRefLine').textContent = m.ref;
+    document.getElementById('flightPath').setAttribute('d', m.path);
+
+    document.getElementById('stepPills').innerHTML = m.steps.map((s, idx) =>
+      `<button class="step-pill ${idx === activeStep ? 'active' : ''}" onclick="goToStep(${idx})">${s.label}</button>`
+    ).join('');
+
+    document.getElementById('waypointNodes').innerHTML = m.steps.map((s, idx) => `
+      <g style="cursor:pointer" onclick="goToStep(${idx})">
+        <circle cx="${s.x}" cy="${s.y}" r="${idx === activeStep ? 13 : 9}" fill="${idx === activeStep ? '#38bdf8' : '#1e293b'}" stroke="#f8fafc" stroke-width="2" />
+        <text x="${s.x}" y="${s.y + 4}" text-anchor="middle" fill="${idx === activeStep ? '#0b1120' : '#f8fafc'}" font-size="11" font-weight="800">${idx + 1}</text>
+      </g>
+    `).join('');
+
+    const st = m.steps[activeStep];
+    document.getElementById('profilePlane').setAttribute('transform', `translate(${st.x}, ${st.y - 22}) rotate(${st.rot})`);
+    document.getElementById('pAcAlt').textContent = st.ac;
+    document.getElementById('pAcSub').textContent = st.sub;
+    document.getElementById('pCabAlt').textContent = st.cab;
+    document.getElementById('pSys').textContent = st.sys;
+    document.getElementById('pReg').textContent = st.reg;
+    document.getElementById('pRisk').textContent = st.risk;
+    document.getElementById('stepActionText').textContent = st.action;
+    document.getElementById('stepCfiText').textContent = st.cfi;
+  }
+
+  function goToStep(idx) { activeStep = idx; renderMission(); }
+
+  function toggleAutoPlay() {
+    if (playTimer) { stopAutoPlay(); }
+    else {
+      document.getElementById('btnPlay').textContent = '⏸ Pause';
+      playTimer = setInterval(() => {
+        activeStep = (activeStep + 1) % missions[activeMission].steps.length;
+        renderMission();
+      }, 2400);
+    }
+  }
+
+  function stopAutoPlay() {
+    if (playTimer) clearInterval(playTimer);
+    playTimer = null;
+    document.getElementById('btnPlay').textContent = '▶ Auto-Fly';
+  }
+
+  // ==================== EMERGENCY DRILL ====================
+  const drillSteps = [
+    { order: 1, text: '1. Don Oxygen Masks Immediately (100% O₂)' },
+    { order: 2, text: '2. Establish Crew Communications (Intercom / Mask Mic)' },
+    { order: 3, text: '3. Initiate Emergency Descent to 10,000 ft MSL (or MEA)' },
+    { order: 4, text: '4. Declare Emergency with ATC (Squawk 7700) & Check Pax' }
+  ];
+  let nextExpected = 1;
+
+  function initDrill() {
+    nextExpected = 1;
+    const status = document.getElementById('drillStatus');
+    status.className = 'callout danger';
+    status.innerHTML = '<strong>CABIN ALTITUDE WARNING!</strong> Click Step 1 of 4:';
+    const shuffled = [...drillSteps].sort(() => Math.random() - 0.5);
+    document.getElementById('drillButtons').innerHTML = shuffled.map(item =>
+      `<button class="drill-btn" id="dBtn${item.order}" onclick="pickDrill(${item.order})">${item.text.slice(3)}</button>`
+    ).join('');
+  }
+
+  function pickDrill(order) {
+    const btn = document.getElementById('dBtn' + order);
+    const status = document.getElementById('drillStatus');
+    if (btn.classList.contains('correct')) return;
+
+    if (order === nextExpected) {
+      btn.classList.remove('wrong');
+      btn.classList.add('correct');
+      btn.innerHTML = `✅ Step ${order}: ` + btn.textContent;
+      nextExpected++;
+      if (nextExpected > 4) {
+        status.className = 'callout good';
+        status.innerHTML = '<strong>🎉 PERFECT RESPONSE!</strong> Masks ON first (protect your brain!), then crew comm, emergency descent, and ATC coordination.';
+      } else {
+        status.className = 'callout warn';
+        status.innerHTML = `<strong>Good!</strong> Now select Step ${nextExpected} of 4:`;
+      }
+    } else {
+      btn.classList.add('wrong');
+      status.className = 'callout danger';
+      status.innerHTML = `<strong>Not yet!</strong> In rapid decompression, ALWAYS put your mask on first before talking or descending. Try Step ${nextExpected} again.`;
+    }
+  }
+
+  // ==================== CHECKRIDE QUIZ ====================
+  const quizData = [
+    {
+      q: '1. Under 14 CFR § 91.211(a), when must passengers in an unpressurized aircraft be PROVIDED with supplemental oxygen?',
+      opts: ['Above 12,500 ft MSL for more than 30 minutes', 'Above 14,000 ft MSL', 'Above 15,000 ft MSL', 'Above 18,000 ft MSL'],
+      ans: 2,
+      exp: '91.211(a)(3) requires each occupant to be provided with supplemental oxygen at cabin pressure altitudes above 15,000 ft MSL.'
+    },
+    {
+      q: '2. What is the maximum altitude for using a nasal cannula?',
+      opts: ['12,500 ft MSL', '15,000 ft MSL', '18,000 ft MSL', '25,000 ft MSL'],
+      ans: 2,
+      exp: 'Nasal cannulas are limited to 18,000 ft MSL. Above 18,000 ft, a mask covering the nose and mouth is required.'
+    },
+    {
+      q: '3. In a pressurized aircraft cruising at FL380 with 2 pilots and quick-donning masks, what must happen if one pilot leaves the flight deck?',
+      opts: ['Nothing, as long as cabin altitude stays below 8,000 ft', 'The remaining pilot must put on and use their oxygen mask until the other pilot returns', 'They must descend to FL250 immediately', 'Both pilots must wear masks for the rest of the flight'],
+      ans: 1,
+      exp: 'Under 91.211(b)(2), above FL350 if one pilot leaves the controls for any reason, the remaining pilot must put on and use an oxygen mask until the other pilot returns.'
+    },
+    {
+      q: '4. Above what flight level must at least ONE pilot wear and use an oxygen mask at ALL times, even with 2 pilots and quick-donning masks?',
+      opts: ['FL 250', 'FL 350', 'FL 410', 'FL 450'],
+      ans: 2,
+      exp: 'The 2-pilot quick-donning exception only applies up to and including FL410. Above FL410, one pilot at the controls must wear and use a mask at all times.'
+    },
+    {
+      q: '5. Why must you ONLY use Aviator’s Breathing Oxygen (ABO) and never medical oxygen?',
+      opts: ['Medical oxygen is only 50% pure', 'Medical oxygen contains moisture that can freeze in regulators at high altitude', 'Medical oxygen is too heavy for aircraft cylinders', 'ABO contains nitrogen to prevent hypoxia'],
+      ans: 1,
+      exp: 'ABO has moisture removed to prevent ice from forming inside oxygen lines and regulators in sub-zero high-altitude temperatures.'
+    }
+  ];
+
+  let score = 0;
+  function renderQuiz() {
+    document.getElementById('quizContainer').innerHTML = quizData.map((item, qi) => `
+      <div class="quiz-q" id="qBox${qi}">
+        <strong>${item.q}</strong>
+        ${item.opts.map((o, oi) => `<button class="quiz-opt" onclick="answerQuiz(${qi}, ${oi}, this)">${o}</button>`).join('')}
+        <div class="quiz-exp" id="qExp${qi}">${item.exp}</div>
+      </div>
+    `).join('');
+  }
+
+  function answerQuiz(qi, oi, btn) {
+    const box = document.getElementById('qBox' + qi);
+    if (box.dataset.done) return;
+    box.dataset.done = '1';
+    const item = quizData[qi];
+    const buttons = box.querySelectorAll('.quiz-opt');
+    if (oi === item.ans) {
+      btn.classList.add('right');
+      score++;
+    } else {
+      btn.classList.add('wrong');
+      buttons[item.ans].classList.add('right');
+    }
+    document.getElementById('qExp' + qi).style.display = 'block';
+    document.getElementById('quizScore').textContent = `Score: ${score} / ${quizData.length}`;
+  }
+
+  // ==================== INIT ====================
+  setACS('PPL');
+  updateAltLab();
+  updateSysLab();
+  renderMission();
+  initDrill();
+  renderQuiz();
+</script>
+</body>
+</html>
